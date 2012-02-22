@@ -1,6 +1,9 @@
+%define _enable_debug_packages %{nil}
+%define debug_package %{nil}
+
 Name:		easymp3gain
 Version:	0.5.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2
 Summary:	Graphical user interface for MP3Gain, AACGain and VorbisGain (GTK2)
 Group:		Sound
