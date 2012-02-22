@@ -37,9 +37,8 @@ It's a native GTK/GTK+ application, so it runs on Linux and FreeBSD/OpenBSD.
 %__rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root)
 %{_bindir}/%{name}
-%{_datadir}/%{name}/*
-%{_desktopdir}/%{name}.desktop
-%{_iconsdir}/*
+%{_datadir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_iconsdir}/hicolor/*/apps/%{name}.png
 
