@@ -45,3 +45,18 @@ It's a native GTK/GTK+ application, so it runs on Linux and FreeBSD/OpenBSD.
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 
+
+
+%changelog
+* Wed Feb 22 2012 Andrey Bondrov <abondrov@mandriva.org> 0.5.0-2mdv2011.0
++ Revision: 779252
+- Disable debug package
+- Update file list
+- imported package easymp3gain
+
+
+* Fri Dec 31 2010 Andrey Bondrov <bondrov@math.dvgu.ru> 0.5.0-69.1mib2010.2
+- New version
+
+* Sun May 31 2009 Andrey Bondrov <bondrov@math.dvgu.ru> 0.4.2-69.1mib2009.1
+- First build for MIB users
