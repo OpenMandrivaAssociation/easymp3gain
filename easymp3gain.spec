@@ -1,43 +1,30 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
+Summary:	Graphical user interface for MP3Gain, AACGain and VorbisGain (GTK2)
 Name:		easymp3gain
 Version:	0.5.0
-Release:	%mkrel 2
-License:	GPLv2
-Summary:	Graphical user interface for MP3Gain, AACGain and VorbisGain (GTK2)
+Release:	3
+License:	GPLv2+
 Group:		Sound
-URL:		http://easymp3gain.sourceforge.net
-BuildRequires:	fpc
-BuildRequires:	lazarus
-BuildRequires:	glib2-devel
-BuildRequires:	gtk2-devel
-BuildRequires:	gdk-pixbuf-devel
+Url:		http://easymp3gain.sourceforge.net
+BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 Source0:	%{name}-%{version}.src.tar.gz
 Patch0:		easymp3gain-cpu.patch
+Patch1:		easymp3gain-0.5.0-desktop.patch
+Patch2:		fix_missing_LazarusDir.diff
+Patch3:		fix_missing_overload_on_AddTask.diff
+BuildRequires:	fpc
+BuildRequires:	lazarus
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gtk+-2.0)
 Requires:	mp3gain
 Requires:	vorbisgain
 
 %description
-easyMP3Gain is a graphical user interface for MP3Gain, AACGain and VorbisGain. 
-The Interface looks similar to the one available for Windows. 
+easyMP3Gain is a graphical user interface for MP3Gain, AACGain and VorbisGain.
+The Interface looks similar to the one available for Windows.
 It's a native GTK/GTK+ application, so it runs on Linux and FreeBSD/OpenBSD.
-
-%prep
-%setup -q
-%ifarch %{ix86}
-%patch0 -p1
-%endif
-
-%build
-%__make all
-
-%install
-%__rm -rf %{buildroot}
-./install.sh DESTDIR=%{buildroot}
-
-%clean
-%__rm -rf %{buildroot}
 
 %files
 %{_bindir}/%{name}
@@ -45,18 +32,21 @@ It's a native GTK/GTK+ application, so it runs on Linux and FreeBSD/OpenBSD.
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 
+#----------------------------------------------------------------------------
+
+%prep
+%setup -q
+%ifarch %{ix86}
+%patch0 -p1
+%endif
+%patch1 -p0
+%patch2 -p1
+%patch3 -p1
+
+%build
+make all
+
+%install
+./install.sh DESTDIR=%{buildroot}
 
 
-%changelog
-* Wed Feb 22 2012 Andrey Bondrov <abondrov@mandriva.org> 0.5.0-2mdv2011.0
-+ Revision: 779252
-- Disable debug package
-- Update file list
-- imported package easymp3gain
-
-
-* Fri Dec 31 2010 Andrey Bondrov <bondrov@math.dvgu.ru> 0.5.0-69.1mib2010.2
-- New version
-
-* Sun May 31 2009 Andrey Bondrov <bondrov@math.dvgu.ru> 0.4.2-69.1mib2009.1
-- First build for MIB users
