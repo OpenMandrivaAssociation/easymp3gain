@@ -4,7 +4,7 @@
 Summary:	Graphical user interface for MP3Gain, AACGain and VorbisGain (GTK2)
 Name:		easymp3gain
 Version:	0.5.0
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Sound
 Url:		http://easymp3gain.sourceforge.net
