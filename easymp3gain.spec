@@ -8,6 +8,7 @@ Release:	4
 License:	GPLv2+
 Group:		Sound
 Url:		https://easymp3gain.sourceforge.net
+BuildRequires:	make
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 Source0:	%{name}-%{version}.src.tar.gz
 Patch0:		easymp3gain-cpu.patch
